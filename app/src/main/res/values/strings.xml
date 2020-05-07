@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Schedulish</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_terms">Terms</string>
+    <string name="title_activity_courses">Courses</string>
+    <string name="title_activity_assessments">Assessments</string>
+    <string name="title_activity_add_term">AddTerm</string>
+
+  
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_course">addCourse</string>
+    <string name="title_activity_course">Course</string>
+    <string name="title_activity_add_assessment">AddAssessment</string>
+    <string name="title_activity_add_alert">AddAlert</string>
+    <string name="title_activity_term_details">TermDetails</string>
+    <string name="title_activity_course_details">CourseDetails</string>
+    <string name="title_activity_exam_details">ExamDetails</string>
+    <string name="title_activity_course_notes">CourseNotes</string>
+    <string name="title_activity_exam_notes">ExamNotes</string>
+    <string name="title_activity_term_notes">TermNotes</string>
+    <string name="title_activity_alerts">Alerts</string>
+    <string name="assessmentdetails">AssessmentDetails</string>
+</resources>
