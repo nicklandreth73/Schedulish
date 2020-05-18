@@ -7,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.schedulish.AssessmentDetails;
+import com.example.schedulish.AddAssessment;
 import com.example.schedulish.Entities.AssessmentEntity;
-import com.example.schedulish.Entities.TermEntity;
 import com.example.schedulish.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,18 +20,33 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
 
     public class AssessmentViewHolder extends RecyclerView.ViewHolder {
         private final TextView assessmentNameField;
+        private final FloatingActionButton assessmentEditButton;
 
         private AssessmentViewHolder(View itemView){
             super(itemView);
-            assessmentNameField = itemView.findViewById(R.id.assessmentNameField);
-            assessmentNameField.setOnClickListener((View v) -> {
+            assessmentEditButton = itemView.findViewById(R.id.assessmentViewEditButton);
+            assessmentEditButton.setOnClickListener((View v) -> {
                 int position = getAdapterPosition();
                 final AssessmentEntity current = mAssessments.get(position);
-                Intent intent = new Intent(context, AssessmentDetails.class);
+                Intent intent = new Intent(context, AddAssessment.class);
                 intent.putExtra("assessmentName", current.getAssessmentName());
                 intent.putExtra("assessmentDate", current.getAssessmentDate());
                 intent.putExtra("position", position);
                 intent.putExtra("assessmentID", current.getAssessmentID());
+                intent.putExtra("assessmentNotes", current.getAssessmentNotes());
+                intent.putExtra("courseID", current.getCourseID());
+                context.startActivity(intent);
+            });
+            assessmentNameField = itemView.findViewById(R.id.assessmentNameField);
+            assessmentNameField.setOnClickListener((View v) -> {
+                int position = getAdapterPosition();
+                final AssessmentEntity current = mAssessments.get(position);
+                Intent intent = new Intent(context, AddAssessment.class);
+                intent.putExtra("assessmentName", current.getAssessmentName());
+                intent.putExtra("assessmentDate", current.getAssessmentDate());
+                intent.putExtra("position", position);
+                intent.putExtra("assessmentID", current.getAssessmentID());
+                intent.putExtra("assessmentNotes", current.getAssessmentNotes());
                 intent.putExtra("courseID", current.getCourseID());
                 context.startActivity(intent);
             });

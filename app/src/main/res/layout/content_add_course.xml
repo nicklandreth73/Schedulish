@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,9 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
-            android:layout_marginTop="64dp"
-            android:text="Cousre Name"
+            android:layout_marginTop="25dp"
+            android:text="Course Name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/courseStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:text="Course Start Date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
             android:id="@+id/courseNameField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="Insert Term Name"
@@ -51,9 +51,9 @@
 
         <EditText
             android:id="@+id/courseEndDateText"
-            android:layout_width="356dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
             android:id="@+id/courseStartDateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,23 +77,21 @@
             android:id="@+id/courseEndDateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseStartDateText"
+            app:layout_constraintTop_toBottomOf="@+id/courseEndDate"
             app:srcCompat="@drawable/ic_date_range_black_24dp"
             tools:ignore="VectorDrawableCompat" />
 
         <EditText
             android:id="@+id/courseStartDateText"
-            android:layout_width="348dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:ems="10"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/courseStartDateButton" />
 
@@ -102,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="55dp"
             android:text="Instructor Name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/courseNameLabel" />
@@ -113,9 +111,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="28dp"
+            android:layout_marginEnd="15dp"
             android:ems="10"
             android:hint="Insert Instructor Name"
             android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/courseNameField" />
 
@@ -123,25 +123,25 @@
             android:id="@+id/courseStateGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/editText">
 
             <RadioButton
-                android:id="@+id/selectCurrent"
+                android:id="@+id/Current"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Current" />
 
             <RadioButton
-                android:id="@+id/selectFuture"
+                android:id="@+id/Future"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Future" />
 
             <RadioButton
-                android:id="@+id/selectPast"
+                android:id="@+id/Past"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Past" />
@@ -151,17 +151,17 @@
             android:id="@+id/courseEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="5dp"
             android:text="Course End Date"
-            app:layout_constraintBottom_toTopOf="@+id/courseEndDateButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseStartDateText" />
 
-        <EditText
+        <TextView
             android:id="@+id/editText"
-            android:layout_width="157dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="154dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Course Status"
@@ -170,5 +170,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instructorNameField" />
 
+        <AutoCompleteTextView
+            android:id="@+id/courseNotes"
+            android:layout_width="349dp"
+            android:layout_height="112dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="2dp"
+            android:autoSizeMaxTextSize="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseNotesLabel" />
+
+        <TextView
+            android:id="@+id/courseNotesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/title_activity_course_notes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseEndDateText" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/courseStartAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/courseStartDateText"
+            app:layout_constraintTop_toBottomOf="@+id/courseStartDateButton"
+            app:srcCompat="@drawable/ic_add_alert_black_24dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/CourseEndAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/courseEndDateText"
+            app:layout_constraintTop_toBottomOf="@+id/courseEndDateButton"
+            app:srcCompat="@drawable/ic_add_alert_black_24dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

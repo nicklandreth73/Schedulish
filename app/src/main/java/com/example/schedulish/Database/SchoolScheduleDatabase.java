@@ -17,7 +17,7 @@ import com.example.schedulish.Entities.AssessmentEntity;
 import com.example.schedulish.Entities.CourseEntity;
 import com.example.schedulish.Entities.TermEntity;
 
-@Database(entities = {TermEntity.class, CourseEntity.class, AssessmentEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {TermEntity.class, CourseEntity.class, AssessmentEntity.class}, version = 5, exportSchema = false)
 
 
 public abstract class SchoolScheduleDatabase extends RoomDatabase {
@@ -63,32 +63,7 @@ public abstract class SchoolScheduleDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params){
-            TermEntity term = new TermEntity(1, "Spring 2019", "3/10/2019", "6/10/2019");
-            mTermDao.insert(term);
-            term = new TermEntity(2, "Summer 2019", "6/10/2019", "9/10/2019");
-            mTermDao.insert(term);
-            term = new TermEntity(3, "Fall 2019", "3/10/2019", "6/10/2019");
-            mTermDao.insert(term);
 
-            CourseEntity course = new CourseEntity(1, "Math101", "Mr.Anderson" , "In progress" ,  "3/15/2019","6/5/2019", 1);
-            mCourseDao.insert(course);
-            course = new CourseEntity(2, "Math102", "Mr.Anderson" , "Future" , "6/15/2019","9/5/2019", 2);
-            mCourseDao.insert(course);
-            course = new CourseEntity(3, "Math103", "Mr.Anderson" , "Future" , "9/15/2019","12/5/2019", 3);
-            mCourseDao.insert(course);
-
-            AssessmentEntity assessment = new AssessmentEntity(1, "Math 101 Midterm", "4/29/2019",1);
-            mAssessmentDao.insert(assessment);
-            assessment = new AssessmentEntity(2, "Math 101 Final", "5/29/2019",1);
-            mAssessmentDao.insert(assessment);
-            assessment = new AssessmentEntity(3, "Math 102 Midterm", "7/29/2019",2);
-            mAssessmentDao.insert(assessment);
-            assessment = new AssessmentEntity(4, "Math 102 Final", "8/29/2019",2);
-            mAssessmentDao.insert(assessment);
-            assessment = new AssessmentEntity(5, "Math 103 Midterm", "10/29/2019",3);
-            mAssessmentDao.insert(assessment);
-            assessment = new AssessmentEntity(6, "Math 103 Final", "11/29/2019",3);
-            mAssessmentDao.insert(assessment);
 
             return null;
         }

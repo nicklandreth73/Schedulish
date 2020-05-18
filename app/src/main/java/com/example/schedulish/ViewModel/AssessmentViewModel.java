@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.schedulish.Database.SchoolScheduleRepository;
 import com.example.schedulish.Entities.AssessmentEntity;
-import com.example.schedulish.Entities.CourseEntity;
 
 import java.util.List;
 
@@ -30,5 +29,6 @@ public class AssessmentViewModel extends AndroidViewModel {
     }
     public LiveData<List<AssessmentEntity>> getAllAssessments() { return mAllAssessments;}
     public void insert(AssessmentEntity assessmentEntity) {mRepository.insert(assessmentEntity);}
+    public void delete(AssessmentEntity assessmentEntity) {mRepository.delete(assessmentEntity);}
     public int lastID() {return mAllAssessments.getValue().size();}
 }

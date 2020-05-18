@@ -1,32 +1,21 @@
 package com.example.schedulish;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.schedulish.Entities.TermEntity;
 import com.example.schedulish.UI.TermsAdapter;
-import com.example.schedulish.ViewModel.AssessmentViewModel;
-import com.example.schedulish.ViewModel.CourseViewModel;
 import com.example.schedulish.ViewModel.TermsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
-
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.List;
 
 public class Terms extends AppCompatActivity {
 
@@ -68,13 +57,30 @@ public class Terms extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_delete, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.delete_button) {
+            Toast.makeText(getApplicationContext(), "Select an empty Term to delete",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
-            TermEntity term = new TermEntity(mTermViewModel.lastID()+1, data.getStringExtra("termName"), data.getStringExtra("termStartDate"), data.getStringExtra("termEndDate"));
+            TermEntity term = new TermEntity(mTermViewModel.lastID()+1, data.getStringExtra("termName"), data.getStringExtra("termStartDate"), data.getStringExtra("termEndDate"),
+                    data.getStringExtra("termNotes"));
             mTermViewModel.insert(term);
         }
     }
+
 }
 
 

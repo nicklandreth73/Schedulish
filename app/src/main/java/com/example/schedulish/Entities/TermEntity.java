@@ -11,22 +11,33 @@ public class TermEntity {
     private String termName;
     private String termStartDate;
     private String termEndDate;
+    private String termNotes;
 
     @Override
     public String toString(){
         return "TermEntity{" +
                 "termID = " + termID +
-                ",termName='" + termName + '\'' +
-                ", termStartDate='" + termStartDate + '\'' +
+                ",termName=" + termName +
+                ", termStartDate=" + termStartDate +
                 ",termEndDate=" + termEndDate +
+                 ",termNotes=" + termNotes +
                 "}";
     }
 
-    public TermEntity(int termID, String termName, String termStartDate, String termEndDate) {
+    public TermEntity(int termID, String termName, String termStartDate, String termEndDate, String termNotes) {
         this.termID = termID;
         this.termName = termName;
         this.termStartDate = termStartDate;
         this.termEndDate = termEndDate;
+        this.termNotes = termNotes;
+    }
+
+    public String getTermNotes() {
+        return termNotes;
+    }
+
+    public void setTermNotes(String termNotes) {
+        this.termNotes = termNotes;
     }
 
     public int getTermID() {

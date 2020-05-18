@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.schedulish.AddTerm;
 import com.example.schedulish.TermDetails;
 import com.example.schedulish.Entities.TermEntity;
 import com.example.schedulish.R;
@@ -21,9 +22,23 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermViewHold
 
     public class TermViewHolder extends RecyclerView.ViewHolder {
         private final TextView termNameField;
+        private final FloatingActionButton editTermButton;
 
         private TermViewHolder(View itemView){
             super(itemView);
+            editTermButton = itemView.findViewById(R.id.termEditButton);
+            editTermButton.setOnClickListener((View v) -> {
+                int position = getAdapterPosition();
+                final TermEntity current = mTerms.get(position);
+                Intent intent = new Intent(context, AddTerm.class);
+                intent.putExtra("termName", current.getTermName());
+                intent.putExtra("termStartDate", current.getTermStartDate());
+                intent.putExtra("termEndDate", current.getTermEndDate());
+                intent.putExtra("position", position);
+                intent.putExtra("termID", current.getTermID());
+                intent.putExtra("termNotes", current.getTermNotes());
+                context.startActivity(intent);
+            });
             termNameField = itemView.findViewById(R.id.termNameField);
             termNameField.setOnClickListener((View v) -> {
                 int position = getAdapterPosition();
@@ -34,6 +49,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermViewHold
                 intent.putExtra("termEndDate", current.getTermEndDate());
                 intent.putExtra("position", position);
                 intent.putExtra("termID", current.getTermID());
+                intent.putExtra("termNotes", current.getTermNotes());
                 context.startActivity(intent);
             });
         }

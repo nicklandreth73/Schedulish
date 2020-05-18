@@ -11,22 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <include
-        layout="@layout/content_assessments"
-        android:layout_width="match_parent"
-        android:layout_height="521dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment" />
+        <include
+            layout="@layout/content_assessments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
-        android:name="com.example.schedulish.TopSectionFragment"
-        android:layout_width="411dp"
-        android:layout_height="158dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -43,14 +36,5 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_assessments" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_circle_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -15,6 +15,10 @@ public class CourseViewModel extends AndroidViewModel {
     private SchoolScheduleRepository mRepository;
     private LiveData<List<CourseEntity>> mAllCourses;
     private LiveData<List<CourseEntity>> mAssociatedCourses;
+    int numCurrent;
+    int numPast;
+    int numFuture;
+
     public CourseViewModel(Application application, int termID){
         super(application);
         mRepository = new SchoolScheduleRepository(application);
@@ -23,14 +27,26 @@ public class CourseViewModel extends AndroidViewModel {
     public CourseViewModel(Application application){
         super(application);
         mRepository = new SchoolScheduleRepository(application);
-        mAssociatedCourses = mRepository.getAllCourses();
+        mAllCourses = mRepository.getAllCourses();
         mAssociatedCourses = mRepository.getAssociatedCourses(termID);
-    }
-    public LiveData<List<CourseEntity>> getAssociatedCourses(int termID){
-        return mRepository.getAssociatedCourses(termID);
-    }
-    public LiveData<List<CourseEntity>> getAllCourses() {return mAllCourses;}
-    public void insert(CourseEntity courseEntity) {mRepository.insert(courseEntity);}
-    public int lastID() {return mAllCourses.getValue().size();}
 
+
+    }
+
+    public int getNumCurrent() {
+        return numCurrent;
+    }
+
+    public int getNumPast() {
+        return numPast;
+    }
+
+    public int getNumFuture() {
+        return numFuture;
+    }
+
+    public LiveData<List<CourseEntity>> getAllCourses() { return mAllCourses;}
+    public void insert(CourseEntity courseEntity) {mRepository.insert(courseEntity);}
+    public void delete(CourseEntity courseEntity) {mRepository.delete(courseEntity);}
+    public int lastID() {return mAllCourses.getValue().size();}
 }

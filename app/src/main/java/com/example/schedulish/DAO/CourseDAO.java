@@ -1,5 +1,6 @@
 package com.example.schedulish.DAO;
 
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,13 +8,13 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-
 import com.example.schedulish.Entities.CourseEntity;
 
 import java.util.List;
 
 @Dao
 public interface CourseDAO {
+
 
     @Insert (onConflict = OnConflictStrategy.REPLACE)
     void insert(CourseEntity course);
@@ -29,5 +30,4 @@ public interface CourseDAO {
 
     @Query("SELECT * FROM course_table WHERE termID = :termID ORDER BY courseID ASC")
     LiveData<List<CourseEntity>> getAllAssociatedCourses(int termID);
-
 }

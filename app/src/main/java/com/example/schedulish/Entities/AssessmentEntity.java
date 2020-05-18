@@ -14,6 +14,7 @@ public class AssessmentEntity {
     private String assessmentName;
     private String assessmentDate;
     private int courseID;
+    private String assessmentNotes;
 
     @Override
     public String toString() {
@@ -21,15 +22,41 @@ public class AssessmentEntity {
                 "assessmentID = " + assessmentID +
                 ", assessmentName = " + assessmentName +
                 ", assessmentDate = " + assessmentDate +
+                ", assessmentNotes =" + assessmentNotes +
                 ", courseID = " + courseID +
                 "}";
     }
 
-    public AssessmentEntity(int assessmentID, String assessmentName, String assessmentDate, int courseID) {
+    public AssessmentEntity(int assessmentID, String assessmentName, String assessmentDate, String assessmentNotes , int courseID) {
         this.assessmentID = assessmentID;
         this.assessmentName = assessmentName;
         this.assessmentDate = assessmentDate;
         this.courseID = courseID;
+        this.assessmentNotes = assessmentNotes;
+    }
+
+    public void setAssessmentID(int assessmentID) {
+        this.assessmentID = assessmentID;
+    }
+
+    public void setAssessmentName(String assessmentName) {
+        this.assessmentName = assessmentName;
+    }
+
+    public void setAssessmentDate(String assessmentDate) {
+        this.assessmentDate = assessmentDate;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
+
+    public String getAssessmentNotes() {
+        return assessmentNotes;
+    }
+
+    public void setAssessmentNotes(String assessmentNotes) {
+        this.assessmentNotes = assessmentNotes;
     }
 
     public int getAssessmentID() {

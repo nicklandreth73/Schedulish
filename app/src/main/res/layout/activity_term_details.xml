@@ -27,18 +27,10 @@
         <include
             layout="@layout/content_term_details"
             android:layout_width="match_parent"
-            android:layout_height="521dp"
+            android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment"
-            android:name="com.example.schedulish.TopSectionFragment"
-            android:layout_width="411dp"
-            android:layout_height="158dp"
-            android:layout_marginTop="52dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
