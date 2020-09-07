@@ -8,7 +8,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="com.example.schedulish.TopSectionFragment"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="158dp"
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"

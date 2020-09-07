@@ -15,6 +15,7 @@ public class AssessmentEntity {
     private String assessmentDate;
     private int courseID;
     private String assessmentNotes;
+    private boolean objective;
 
     @Override
     public String toString() {
@@ -24,15 +25,25 @@ public class AssessmentEntity {
                 ", assessmentDate = " + assessmentDate +
                 ", assessmentNotes =" + assessmentNotes +
                 ", courseID = " + courseID +
+                ", objective = " + objective +
                 "}";
     }
 
-    public AssessmentEntity(int assessmentID, String assessmentName, String assessmentDate, String assessmentNotes , int courseID) {
+    public AssessmentEntity(int assessmentID, String assessmentName, String assessmentDate, String assessmentNotes , int courseID, boolean objective) {
         this.assessmentID = assessmentID;
         this.assessmentName = assessmentName;
         this.assessmentDate = assessmentDate;
         this.courseID = courseID;
         this.assessmentNotes = assessmentNotes;
+        this.objective = objective;
+    }
+
+    public boolean isObjective() {
+        return objective;
+    }
+
+    public void setObjective(boolean objective) {
+        this.objective = objective;
     }
 
     public void setAssessmentID(int assessmentID) {

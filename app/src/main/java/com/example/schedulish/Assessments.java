@@ -59,7 +59,7 @@ public class Assessments extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
             AssessmentEntity assessment = new AssessmentEntity(mAssessmentViewModel.lastID()+1, data.getStringExtra("assessmentName"), data.getStringExtra("assessmentDate"),
-                  data.getStringExtra("assessmentNotes"),  getIntent().getIntExtra("courseID", 0));
+                  data.getStringExtra("assessmentNotes"),  getIntent().getIntExtra("courseID", 0), getIntent().getBooleanExtra("objective", true));
             mAssessmentViewModel.insert(assessment);
         }
     }

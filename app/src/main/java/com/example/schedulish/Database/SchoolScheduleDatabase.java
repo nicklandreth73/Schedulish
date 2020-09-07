@@ -17,7 +17,7 @@ import com.example.schedulish.Entities.AssessmentEntity;
 import com.example.schedulish.Entities.CourseEntity;
 import com.example.schedulish.Entities.TermEntity;
 
-@Database(entities = {TermEntity.class, CourseEntity.class, AssessmentEntity.class}, version = 5, exportSchema = false)
+@Database(entities = {TermEntity.class, CourseEntity.class, AssessmentEntity.class}, version = 7, exportSchema = false)
 
 
 public abstract class SchoolScheduleDatabase extends RoomDatabase {

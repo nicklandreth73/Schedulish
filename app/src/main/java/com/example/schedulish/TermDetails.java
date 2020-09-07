@@ -70,7 +70,7 @@ public class TermDetails extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
             CourseEntity course = new CourseEntity(mCourseViewModel.lastID()+1, data.getStringExtra("courseName"), data.getStringExtra("courseStartDate"), data.getStringExtra("courseEndDate"),
-                     data.getStringExtra("instructorName"), data.getStringExtra("status"), data.getStringExtra("courseNotes"),  getIntent().getIntExtra("termID",0));
+                     data.getStringExtra("instructorName"), data.getStringExtra("status"), data.getStringExtra("courseNotes"),  getIntent().getIntExtra("termID",0), data.getStringExtra("phoneNumber"), data.getStringExtra("email"));
             mCourseViewModel.insert(course);
         }
     }

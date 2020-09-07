@@ -15,9 +15,7 @@ public class CourseViewModel extends AndroidViewModel {
     private SchoolScheduleRepository mRepository;
     private LiveData<List<CourseEntity>> mAllCourses;
     private LiveData<List<CourseEntity>> mAssociatedCourses;
-    int numCurrent;
-    int numPast;
-    int numFuture;
+
 
     public CourseViewModel(Application application, int termID){
         super(application);
@@ -29,21 +27,8 @@ public class CourseViewModel extends AndroidViewModel {
         mRepository = new SchoolScheduleRepository(application);
         mAllCourses = mRepository.getAllCourses();
         mAssociatedCourses = mRepository.getAssociatedCourses(termID);
-
-
     }
 
-    public int getNumCurrent() {
-        return numCurrent;
-    }
-
-    public int getNumPast() {
-        return numPast;
-    }
-
-    public int getNumFuture() {
-        return numFuture;
-    }
 
     public LiveData<List<CourseEntity>> getAllCourses() { return mAllCourses;}
     public void insert(CourseEntity courseEntity) {mRepository.insert(courseEntity);}

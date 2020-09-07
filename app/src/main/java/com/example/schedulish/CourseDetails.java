@@ -96,7 +96,7 @@ public class CourseDetails extends AppCompatActivity {
                         }
                     }
                 });
-            }else Toast.makeText(getApplicationContext(), "Courses cannot be deleted if they have courses",Toast.LENGTH_LONG).show();
+            }else Toast.makeText(getApplicationContext(), "Courses cannot be deleted if they have assessments",Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -105,7 +105,7 @@ public class CourseDetails extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
             AssessmentEntity assessment = new AssessmentEntity(mAssessmentViewModel.lastID()+1, data.getStringExtra("assessmentName"), data.getStringExtra("assessmentDate"),
-                    data.getStringExtra("assessmentNotes"),  getIntent().getIntExtra("courseID", 0));
+                    data.getStringExtra("assessmentNotes"),  getIntent().getIntExtra("courseID", 0), getIntent().getBooleanExtra("objective", true));
             mAssessmentViewModel.insert(assessment);
         }
     }

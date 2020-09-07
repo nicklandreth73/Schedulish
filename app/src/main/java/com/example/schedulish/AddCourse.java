@@ -36,6 +36,8 @@ public class AddCourse extends AppCompatActivity implements DatePickerDialog.OnD
     private EditText courseStartDate;
     private EditText courseEndDate;
     private EditText instructorName;
+    private EditText instructorPhoneNumber;
+    private EditText instructorEmail;
     private AutoCompleteTextView courseNotes;
     private RadioGroup courseState;
     private CourseViewModel mCourseViewModel;
@@ -66,6 +68,9 @@ public class AddCourse extends AppCompatActivity implements DatePickerDialog.OnD
          instructorName = findViewById(R.id.instructorNameField);
          courseNotes = findViewById(R.id.courseNotes);
          courseState = findViewById(R.id.courseStateGroup);
+         instructorPhoneNumber = findViewById(R.id.phoneField);
+         instructorEmail = findViewById(R.id.emailField);
+
 
         if(getIntent().getStringExtra("courseName")!=null){
             courseName.setText(getIntent().getStringExtra("courseName"));
@@ -74,6 +79,8 @@ public class AddCourse extends AppCompatActivity implements DatePickerDialog.OnD
             instructorName.setText(getIntent().getStringExtra("instructorName"));
             courseNotes.setText(getIntent().getStringExtra("courseNotes"));
             state = getIntent().getStringExtra("status");
+            instructorPhoneNumber.setText(getIntent().getStringExtra("phoneNumber"));
+            instructorEmail.setText(getIntent().getStringExtra("email"));
 
             switch (state){
                 case"Current":
@@ -158,29 +165,36 @@ public class AddCourse extends AppCompatActivity implements DatePickerDialog.OnD
         int id = item.getItemId();
 
         if (id == R.id.save_button) {
-            Intent replyIntent = new Intent();
-            String name = courseName.getText().toString();
-            String startDate = courseStartDate.getText().toString();
-            String endDate = courseEndDate.getText().toString();
-            String instructor = instructorName.getText().toString();
-            String status = checkedButton(courseState.getCheckedRadioButtonId());
-            String notes = courseNotes.getText().toString();
-            replyIntent.putExtra("courseName", name);
-            replyIntent.putExtra("courseStartDate", startDate);
-            replyIntent.putExtra("courseEndDate", endDate);
-            replyIntent.putExtra("instructorName", instructor);
-            replyIntent.putExtra("status", status);
-            replyIntent.putExtra("courseNotes", notes);
-            replyIntent.putExtra("termID", getIntent().getIntExtra("termID", 0));
-            if (getIntent().getStringExtra("courseName") != null) {
-                int courseID = getIntent().getIntExtra("courseID", 0);
-                int termID = getIntent().getIntExtra("termID", 0);
-                CourseEntity course = new CourseEntity(courseID, name, startDate, endDate, instructor, status, notes, termID);
-                mCourseViewModel.insert(course);
-            }
-            setResult(RESULT_OK, replyIntent);
-            finish();
-            return true;
+            if(!courseName.getText().toString().matches("")) {
+                Intent replyIntent = new Intent();
+                String name = courseName.getText().toString();
+                String startDate = courseStartDate.getText().toString();
+                String endDate = courseEndDate.getText().toString();
+                String instructor = instructorName.getText().toString();
+                String status = checkedButton(courseState.getCheckedRadioButtonId());
+                String notes = courseNotes.getText().toString();
+                String phone = instructorPhoneNumber.getText().toString();
+                String email = instructorEmail.getText().toString();
+                replyIntent.putExtra("courseName", name);
+                replyIntent.putExtra("courseStartDate", startDate);
+                replyIntent.putExtra("courseEndDate", endDate);
+                replyIntent.putExtra("instructorName", instructor);
+                replyIntent.putExtra("status", status);
+                replyIntent.putExtra("courseNotes", notes);
+                replyIntent.putExtra("phoneNumber", phone);
+                replyIntent.putExtra("email", email);
+                replyIntent.putExtra("termID", getIntent().getIntExtra("termID", 0));
+                if (getIntent().getStringExtra("courseName") != null) {
+                    int courseID = getIntent().getIntExtra("courseID", 0);
+                    int termID = getIntent().getIntExtra("termID", 0);
+                    CourseEntity course = new CourseEntity(courseID, name, startDate, endDate, instructor, status, notes, termID, phone, email);
+                    mCourseViewModel.insert(course);
+                }
+
+                setResult(RESULT_OK, replyIntent);
+                finish();
+                return true;
+            }else Toast.makeText(this, "Please add name before saving course", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.share_button) {
             if (!courseNotes.getText().toString().matches("")) {

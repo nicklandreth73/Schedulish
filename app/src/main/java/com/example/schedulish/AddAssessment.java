@@ -24,6 +24,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -40,6 +41,7 @@ public class AddAssessment extends AppCompatActivity implements DatePickerDialog
     private long timeInMills;
     private String currentDateString = "";
     private int r = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+    private RadioGroup assessmentType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,14 @@ public class AddAssessment extends AppCompatActivity implements DatePickerDialog
         assessmentName = findViewById(R.id.assessmentNameField);
         assessmentDate = findViewById(R.id.assessmentDateText);
         assessmentNotes = findViewById(R.id.assessmentNotes);
+        assessmentType = findViewById(R.id.objectiveGroup);
         if(assessmentName != null){
             assessmentName.setText(getIntent().getStringExtra("assessmentName"));
             assessmentDate.setText(getIntent().getStringExtra("assessmentDate"));
             assessmentNotes.setText(getIntent().getStringExtra("assessmentNotes"));
+            if(getIntent().getBooleanExtra("objective", true)){
+                assessmentType.check(R.id.objectiveButton);
+            }else assessmentType.check(R.id.performanceButton);
         }
 
         //Sets alarms to the text in the fields if null sends warning toast
@@ -104,22 +110,26 @@ public class AddAssessment extends AppCompatActivity implements DatePickerDialog
         int id = item.getItemId();
 
         if (id == R.id.save_button) {
-            Intent replyIntent = new Intent();
-            String name = assessmentName.getText().toString();
-            String date = assessmentDate.getText().toString();
-            String notes = assessmentNotes.getText().toString();
-            replyIntent.putExtra("assessmentName",name);
-            replyIntent.putExtra("assessmentDate",date);
-            replyIntent.putExtra("assessmentNotes",notes);
-        if(getIntent().getStringExtra("assessmentName") !=null){
-            int assessmentID = getIntent().getIntExtra("assessmentID", 0);
-            int courseID = getIntent().getIntExtra("courseID",0);
-            AssessmentEntity assessment = new AssessmentEntity(assessmentID,name,date,notes,courseID);
-            mAssessmentViewModel.insert(assessment);
-        }
-        setResult(RESULT_OK,replyIntent);
-        finish();
-            return true;
+            if(!assessmentName.getText().toString().matches("")) {
+                Intent replyIntent = new Intent();
+                String name = assessmentName.getText().toString();
+                String date = assessmentDate.getText().toString();
+                String notes = assessmentNotes.getText().toString();
+                boolean isObjective = isObjective(assessmentType.getCheckedRadioButtonId());
+                replyIntent.putExtra("assessmentName", name);
+                replyIntent.putExtra("assessmentDate", date);
+                replyIntent.putExtra("assessmentNotes", notes);
+                replyIntent.putExtra("objective", isObjective);
+                if (getIntent().getStringExtra("assessmentName") != null) {
+                    int assessmentID = getIntent().getIntExtra("assessmentID", 0);
+                    int courseID = getIntent().getIntExtra("courseID", 0);
+                    AssessmentEntity assessment = new AssessmentEntity(assessmentID, name, date, notes, courseID, isObjective);
+                    mAssessmentViewModel.insert(assessment);
+                }
+                setResult(RESULT_OK, replyIntent);
+                finish();
+                return true;
+            }else Toast.makeText(this, "Please add assessment name before saving", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.delete_button) {
                 mAssessmentViewModel.getAllAssessments().observe(this, new Observer<List<AssessmentEntity>>() {
@@ -173,4 +183,9 @@ public class AddAssessment extends AppCompatActivity implements DatePickerDialog
             EditText dateText = findViewById(R.id.assessmentDateText);
             dateText.setText(currentDateString);
         }
+        private boolean isObjective(int id){
+        if(id == R.id.performanceButton){
+            return false;
+        }else return true;
+    }
 }

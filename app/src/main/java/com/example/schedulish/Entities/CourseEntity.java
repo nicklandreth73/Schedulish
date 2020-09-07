@@ -16,6 +16,8 @@ public class CourseEntity {
     private String status;
     private String courseNotes;
     private int termID;
+    private String phoneNumber;
+    private String email;
 
     @Override
     public String toString(){
@@ -28,11 +30,30 @@ public class CourseEntity {
                 ", status = " + status +
                 ", termID = " + termID +
                 ", courseNotes" + courseNotes +
+                ", phoneNumber" + phoneNumber +
+                ", email" + email +
                 " }";
 
 
     }
-    public CourseEntity(int courseID, String courseName, String courseStartDate, String courseEndDate, String instructorName, String status, String courseNotes, int termID){
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public CourseEntity(int courseID, String courseName, String courseStartDate, String courseEndDate, String instructorName, String status, String courseNotes, int termID, String phoneNumber, String email){
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseStartDate = courseStartDate;
@@ -41,6 +62,8 @@ public class CourseEntity {
         this.status = status;
         this.courseNotes = courseNotes;
         this.termID = termID;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public String getCourseNotes() {

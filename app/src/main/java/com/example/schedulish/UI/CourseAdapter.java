@@ -39,6 +39,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 intent.putExtra("status", current.getStatus());
                 intent.putExtra("courseNotes", current.getCourseNotes());
                 intent.putExtra("termID", current.getTermID());
+                intent.putExtra("phoneNumber", current.getPhoneNumber());
+                intent.putExtra("email", current.getEmail());
                 intent.putExtra("position", position);
                 context.startActivity(intent);
             });
@@ -55,6 +57,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                 intent.putExtra("status", current.getStatus());
                 intent.putExtra("courseNotes", current.getCourseNotes() );
                 intent.putExtra("termID", current.getTermID());
+                intent.putExtra("phoneNumber", current.getPhoneNumber());
+                intent.putExtra("email", current.getEmail());
                 intent.putExtra("position", position);
                 context.startActivity(intent);
             });

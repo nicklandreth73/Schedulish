@@ -35,6 +35,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
                 intent.putExtra("assessmentID", current.getAssessmentID());
                 intent.putExtra("assessmentNotes", current.getAssessmentNotes());
                 intent.putExtra("courseID", current.getCourseID());
+                intent.putExtra("objective", current.isObjective());
                 context.startActivity(intent);
             });
             assessmentNameField = itemView.findViewById(R.id.assessmentNameField);
@@ -48,6 +49,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
                 intent.putExtra("assessmentID", current.getAssessmentID());
                 intent.putExtra("assessmentNotes", current.getAssessmentNotes());
                 intent.putExtra("courseID", current.getCourseID());
+                intent.putExtra("objective", current.isObjective());
                 context.startActivity(intent);
             });
         }

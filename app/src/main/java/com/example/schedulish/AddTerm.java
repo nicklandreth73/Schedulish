@@ -137,23 +137,25 @@ public class AddTerm extends AppCompatActivity implements DatePickerDialog.OnDat
         int id = item.getItemId();
 
         if (id == R.id.save_button) {
-            Intent replyIntent = new Intent();
-            String name = termName.getText().toString();
-            String startDate = termStartDate.getText().toString();
-            String endDate = termEndDate.getText().toString();
-            String notes = termNotes.getText().toString();
-            replyIntent.putExtra("termName",name);
-            replyIntent.putExtra("termStartDate",startDate);
-            replyIntent.putExtra("termEndDate",endDate);
-            replyIntent.putExtra("termNotes",notes);
-            if(getIntent().getStringExtra("termName") !=null){
-                int termID = getIntent().getIntExtra("termID", 0);
-                TermEntity term = new TermEntity(termID,name,startDate,endDate,notes);
-                mTermViewModel.insert(term);
-            }
-            setResult(RESULT_OK,replyIntent);
-            finish();
-            return true;
+            if(!termName.getText().toString().matches("")) {
+                Intent replyIntent = new Intent();
+                String name = termName.getText().toString();
+                String startDate = termStartDate.getText().toString();
+                String endDate = termEndDate.getText().toString();
+                String notes = termNotes.getText().toString();
+                replyIntent.putExtra("termName", name);
+                replyIntent.putExtra("termStartDate", startDate);
+                replyIntent.putExtra("termEndDate", endDate);
+                replyIntent.putExtra("termNotes", notes);
+                if (getIntent().getStringExtra("termName") != null) {
+                    int termID = getIntent().getIntExtra("termID", 0);
+                    TermEntity term = new TermEntity(termID, name, startDate, endDate, notes);
+                    mTermViewModel.insert(term);
+                }
+                setResult(RESULT_OK, replyIntent);
+                finish();
+                return true;
+            }else Toast.makeText(this, "Please add term name before saving", Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.share_button) {
             if(!termNotes.getText().toString().matches("")){

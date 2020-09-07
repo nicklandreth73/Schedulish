@@ -57,7 +57,7 @@ public class Courses extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
             CourseEntity course = new CourseEntity(mCourseViewModel.lastID()+1, data.getStringExtra("courseName"), data.getStringExtra("courseStartDate"), data.getStringExtra("courseEndDat"),
-                    data.getStringExtra("status"), data.getStringExtra("instructorName"), data.getStringExtra("courseNotes"), 1);
+                    data.getStringExtra("status"), data.getStringExtra("instructorName"), data.getStringExtra("courseNotes"), 1, data.getStringExtra("phoneNumber"), data.getStringExtra("email") );
             mCourseViewModel.insert(course);
         }
     }
